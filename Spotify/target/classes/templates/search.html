@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+
+    <h1>Search Results</h1>
+
+    <form action="/search" method="get">
+        <label for="keyword">Search:</label>
+        <input type="text" id="keyword" name="keyword" th:value="${param.keyword}">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul th:if="${searchResults}">
+        <li th:each="user : ${searchResults}">
+            <span th:text="${user.username}"></span> - <span th:text="${user.email}"></span>
+        </li>
+    </ul>
+
+</body>
+</html>
